@@ -91,8 +91,35 @@
 ### Pipes en Redirection
 
 #### Input, Output en Error kanalen
-- **STDIN, STDOUT, STDERR** (0, 1, 2 resp.)
 
+- **STDIN, STDOUT, STDERR** (respectievelijk kanaal 0, 1 en 2)
+- Deze kanalen kan je **omleiden** met behulp van `>`, `2>`, `&>` enz.
+- Handig voor logging, foutafhandeling, en debugging in scripts
+
+```bash
+echo "hello" > tekst.txt         
+# STDOUT (kanaal 1) wordt omgeleid naar bestand "tekst.txt"
+# Gelijk aan: echo "hello" 1> tekst.txt
+# Resultaat: tekst.txt bevat "hello", geen output op scherm
+
+mkdir test 2> error.txt          
+# STDERR (kanaal 2) wordt omgeleid naar bestand "error.txt"
+# Als de directory "test" al bestaat, gaat de foutmelding naar "error.txt"
+
+mkdir test &> error.txt          
+# Zowel STDOUT (1) als STDERR (2) worden naar "error.txt" gestuurd
+# Gelijk aan: mkdir test > error.txt 2>&1
+# Je vangt dus alle output én fouten in één bestand
+
+mkdir test 2> /dev/null          
+# STDERR wordt omgeleid naar /dev/null
+# /dev/null is een speciaal apparaat dat alles negeert → foutmeldingen verdwijnen
+
+echo "fout" >&2                  
+# STDOUT wordt omgeleid naar STDERR
+# Gelijk aan: echo "fout" 1>&2
+# Handig voor foutboodschappen die je apart wil behandelen of loggen
+```
 ```bash
 echo "hello" > tekst.txt         # STDOUT naar bestand (of 1>)
 mkdir test 2> error.txt          # STDERR naar bestand
