@@ -4,6 +4,12 @@
 # Versie: 0.1
 # Datum: 2025-07-15
 
+if [ "$1" = "--help" ]; then
+    echo "Usage: $(basename $0) [url]"
+    echo "Geeft een benchmark van een apache webserver."
+    exit 0
+fi
+
 error_geen_ab="Fout in $0: het programma 'ab' is niet geïnstalleerd."
 error_url="de url is niet bereikbaar"
 
