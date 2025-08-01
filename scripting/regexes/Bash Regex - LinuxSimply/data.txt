@@ -1,0 +1,7 @@
+apple 100
+banana 150
+orange 200
+apple 50
+grape 250
+apple 60
+
