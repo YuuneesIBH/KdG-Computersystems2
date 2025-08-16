@@ -1,0 +1,12 @@
+booting &IO output:
+https://quizlet.com/be/867794778/final-boss-cstheorie-studieset-gebasserd-op-voorbeeld-examenvragen-part-1-flash-cards/?setIdOrUsername=867794778
+I/0 bestandbeheer:
+https://quizlet.com/be/868049415/final-boss-cstheorie-studieset-gebasserd-op-voorbeeld-examenvragen-part-2-flash-cards/?i=2q5cag&x=1qqt
+Processbeheer
+https://quizlet.com/be/867845290/final-boss-cstheorie-studieset-gebasserd-op-voorbeeld-examenvragen-part-3-flash-cards/?new
+GeheugenBeheer:
+https://quizlet.com/be/868062315/final-boss-cstheorie-studieset-gebasserd-op-voorbeeld-examenvragen-part-4-flash-cards/?new
+Interprocess communicatie
+https://quizlet.com/be/868313314/final-boss-cstheorie-studieset-gebasserd-op-voorbeeld-examenvragen-part-5-flash-cards/?i=2q5cag&x=1qqt
+Ui & Virtualisatie
+https://quizlet.com/be/868318749/final-boss-cstheorie-studieset-gebasserd-op-voorbeeld-examenvragen-part-6-flash-cards/?new

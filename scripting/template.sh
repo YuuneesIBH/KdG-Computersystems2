@@ -29,6 +29,12 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+#script mag NIET als root uitgevoerd worden
+if [[ "$(id -u)" -eq 0 ]]; then
+    log_error "Je mag het script NIET als root uitvoeren!"
+    exit 1
+fi
+
 #help tonen if needed OR als er geen arguments worden gegeven!
 if [ "$1" = "--help" ] || [ "$#" -ne 1 ]; then
     echo "Usage: $(basename $0) [--help | --version]"
