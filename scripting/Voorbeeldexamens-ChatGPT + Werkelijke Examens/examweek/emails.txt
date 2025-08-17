@@ -1,0 +1,5 @@
+Jan;Peeters;jan.peeters@example.com
+Fatima;El Amrani;fatima.elamrani@example.com
+Lars;Vermeulen;lars.vermeulen@example.com
+Sophie;De Smet;sophie.desmet@example.com
+Younes;El Azzouzi;younes.elazzouzi@example.com

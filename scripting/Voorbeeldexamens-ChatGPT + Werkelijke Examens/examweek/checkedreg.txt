@@ -1,0 +1,9 @@
+Naam;Achternaam;Mailextensie
+Jan;Peeters;example.com
+Fatima;El Amrani;example.com
+Lars;Vermeulen;example.com
+Sophie;De Smet;example.com
+Jan;Peeters;example.com
+Fatima;El Amrani;example.com
+Lars;Vermeulen;example.com
+Sophie;De Smet;example.com
