@@ -1,0 +1,41 @@
+# Emails
+john.doe@gmail.com
+jane_doe123@outlook.be
+info@kdg.be
+notanemail@@gmail..com
+
+# IP-adressen
+192.168.1.1
+10.0.0.25
+255.255.255.255
+999.999.999.999
+
+# Datums (verschillende formaten)
+01/01/2025
+31-12-2024
+2025-08-18
+18.08.2025
+32/13/2025
+
+# URLs
+https://www.google.com
+http://kdg.be/index.html
+ftp://files.server.local/data
+www.test-site.org
+
+# Telefoonnummers
++32 485 12 34 56
+0032-3-1234567
++1-202-555-0173
+123456789
+
+# Namen met rare tekens
+El Azzouzi, Younes
+O'Neill, Shaun
+Jean-Luc Picard
+Müller, André
+
+# Random tekst
+Hello World 123!!!
+UserID: abc-123_XYZ
+ERROR[404]: Page not found
