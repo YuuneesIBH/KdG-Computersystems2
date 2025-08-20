@@ -1,0 +1,17 @@
+Wat gevonden? | Gevonden Item
+Captured:   kdg.be
+Captured:   gaming-zone.net
+Captured:   jane.doe+it
+Captured:   max.power+xl
+Captured:   jane.doe+test
+Captured:   gaming-zone.net
+Captured uur:   19
+Captured minuut:   45
+Captured uur:   23
+Captured minuut:   59
+Captured IP:   192.168.1.45
+Captured IP:   192.168.1.45
+Captured session ID:   af92b3
+file:   report_final_v2.pdf
+Productpicture:   StayPowered_Mousepad_Black.jpg
+CustomerID extracted:   77421

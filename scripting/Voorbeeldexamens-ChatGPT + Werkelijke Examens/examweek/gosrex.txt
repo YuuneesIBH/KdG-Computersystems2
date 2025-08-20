@@ -1,0 +1,6 @@
+jane.doe@kdg.be
+Younes;El Azzouzi;jane.doe+it@mail.student-kdg.be
+PizzaTime42;RandomStreet;max.power+xl@gaming-zone.net
+2025-08-20 19:45:12 | INFO | User login from 192.168.1.45
+ERROR [2025-08-20 23:59:59] (SessionID=af92b3) User=jane.doe+test@mail.student-kdg.be -> Action=UPLOAD file=report_final_v2.pdf from IP=10.0.0.25
+CustomerID=77421;Order=55892;Product=StayPowered_Mousepad_Black.jpg;Price=27.95;Status=Shipped
