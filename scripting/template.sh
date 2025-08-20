@@ -62,6 +62,24 @@ if ! command -v ab >/dev/null 2>&1; then
     fi
 fi
 
+bestand="gosrex.txt"
+[[ -r $bestand ]] || { log_error "Bestand: $bestand is onleesbaar!" >&2; exit 1; }
+
+output="output.txt"
+echo "Wat gevonden? | Gevonden Item" > "$output"
+
+while IFS= read -r lijn || [[ -n $lijn ]]; do
+    regex='^[^@[:space:]]+@([[:alnum:]-]+\.[[:alpha:]]+)$'
+    lijn=${lijn%$'\r'}
+    [[ -z $lijn ]] && continue #sla lege lijnen over
+    if [[ $lijn =~ $regex ]]; then
+        printf 'Full match: %s\n' "$lijn" 
+        printf 'Captured:   %s\n' "${BASH_REMATCH[1]}" >> "$output"
+    else
+        log_error "Geen match!"
+    fi
+done < "$bestand"
+
 eindtijd=$(date +%s)
 duur=$((eindtijd - starttijd))
 kleur_output "1;33" "Het script duurde $duur seconden."
@@ -76,3 +94,60 @@ if [ "${#errors[@]}" -gt 0 ]; then
 fi
 
 exit 0
+
+# ==============================
+# Voorbeeld: parameters controleren
+# ==============================
+# "$#" = aantal parameters waarmee script gestart wordt
+# "-ne 3" = not equal to 3
+#
+# Voorbeeld van parametergebruik:
+# bestand=$1   # eerste argument
+# user=$2      # tweede argument
+# groep=$3     # derde argument
+#
+# echo "Bestand=$bestand, User=$user, Groep=$groep"
+
+# ==============================
+# IFS (Internal Field Separator)
+# ==============================
+# Default = spatie, tab, newline
+# Bash gebruikt IFS bij woord-splitsing en bij read/for loops
+#
+# Veelgebruikte instellingen:
+#
+# IFS=";"       # splitst op puntkomma → typisch CSV uit Excel
+# IFS=","       # splitst op komma → CSV-bestanden
+# IFS=":"       # splitst op dubbele punt → bv. /etc/passwd velden
+# IFS=$'\n'     # splitst enkel op newline → handig bij bestandslezen
+# IFS=" "       # splitst op spatie (zelden nodig, want standaard al zo)
+# IFS=$'\t'     # splitst op tabs → bv. tab-gescheiden bestanden
+# IFS=",:;"     # meerdere tegelijk: splitst op komma, dubbele punt en puntkomma
+#
+# Tip: na gebruik terugzetten naar default met:
+#   unset IFS
+# ==============================
+
+# ==============================
+# Command substitution (commando in variabele steken)
+# ==============================
+# Beste manier: gebruik $(commando)
+# (backticks `commando` bestaan ook maar zijn verouderd)
+#
+# Voorbeelden:
+#
+# 1) Volledige output in variabele
+# root_procs=$(ps -ef | grep root)
+# echo "$root_procs"
+#
+# 2) Enkel specifieke kolom eruit halen (met awk)
+# root_pids=$(ps -ef | awk '$1 == "root" {print $2}')
+# echo "Alle PID's van root:"
+# echo "$root_pids"
+#
+# 3) Foutmeldingen ook mee in variabele stoppen
+# output=$(ls /nietbestaandepad 2>&1)
+# echo "$output"
+#
+# Tip: gebruik altijd $() i.p.v. backticks voor leesbaarheid
+# ==============================
