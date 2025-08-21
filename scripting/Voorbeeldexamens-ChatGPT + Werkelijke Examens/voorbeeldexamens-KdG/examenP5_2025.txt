@@ -1,0 +1,16 @@
+je script accepteert 1 argument pad naar dir
+optioneel een tweede argument bestandsextensie
+analyse beperken tot bestandsextensie
+
+controle of dir bestaat niet leeg is een lege file mag niet tellen
+gebruik functie average die totale grootte en aantal bestanden als input krijgt 2 cijfers na komma
+
+gebruik stat -c %s bestand voor de grootte in bytes
+maak de som van gevonden files geef het gemiddelde met de average functie
+
+kleur_output "1;36" "--- Bestandsanalyse Rapport ---"
+echo "Directory: $directory"
+echo "Bestandsextensie: $file_extension"
+echo "Totaal aantal relevante bestanden: $count_extension"
+echo "Totaal grootte van de relevante bestanden: $sum"
+average "$sum" "$count_extension"

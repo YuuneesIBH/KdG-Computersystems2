@@ -1,0 +1,73 @@
+#!/bin/bash
+# Functie: Analyseer PCI-devices met lspci
+# Auteur: Younes El Azzouzi
+# Versie: 1.0
+
+starttijd=$(date +%s)
+
+# Kleurfunctie voor duidelijke output
+kleur_output() {
+    local kleurcode=$1
+    local tekst=$2
+    echo -e "\033[${kleurcode}m${tekst}\033[0m"
+}
+
+# Array voor errors
+declare -a errors
+
+# Foutlogging (naar STDERR + array)
+log_error() {
+    local fout="$1"
+    errors+=("$fout")
+    kleur_output "1;31" "ERROR: $fout" >&2
+}
+
+# Controle of lspci aanwezig is
+if ! command -v lspci >/dev/null 2>&1; then
+    log_error "Het commando 'lspci' (pakket pciutils) is niet geïnstalleerd!"
+    exit 1
+fi
+
+# Script mag NIET als root uitgevoerd worden
+if [[ "$(id -u)" -eq 0 ]]; then
+    log_error "Je mag dit script NIET als root uitvoeren!"
+    exit 1
+fi
+
+# Helpfunctie
+if [[ "$1" == "--help" ]] || [[ $# -ne 1 ]]; then
+    echo "Usage: $(basename "$0") [--help | --version | <regex-filter>]"
+    echo "Voorbeeld: $(basename "$0") 'Ethernet'"
+    exit 0
+fi
+
+# Version
+if [[ "$1" == "--version" ]]; then
+    echo "$(basename "$0") versie 1.0"
+    exit 0
+fi
+
+# Regex filter meegegeven
+regex="$1"
+
+# Verwerking met lspci
+bestand="pci_output.txt"
+lspci > "$bestand" 2>errors.log
+
+# Bestand uitlezen en regex toepassen
+while IFS= read -r lijn; do
+    if [[ "$lijn" =~ $regex ]]; then
+        echo "MATCH: $lijn"
+    fi
+done < "$bestand"
+
+# Exitcode bepalen
+if [[ ${#errors[@]} -gt 0 ]]; then
+    exit 2
+else
+    echo "Script succesvol uitgevoerd."
+    eindtijd=$(date +%s)
+    duur=$((eindtijd - starttijd))
+    echo "Uitvoertijd: ${duur} seconden"
+    exit 0
+fi
